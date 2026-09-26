@@ -1,0 +1,8 @@
+
+State Machine - |mips32_multicycle|control_unit:Ctrl_unit|current_state
+Name current_state.Writeback current_state.Writememory current_state.Execute current_state.Decode current_state.Fetch 
+current_state.Fetch 0 0 0 0 0 
+current_state.Decode 0 0 0 1 1 
+current_state.Execute 0 0 1 0 1 
+current_state.Writememory 0 1 0 0 1 
+current_state.Writeback 1 0 0 0 1 

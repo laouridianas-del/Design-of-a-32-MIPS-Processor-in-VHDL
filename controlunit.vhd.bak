@@ -1,0 +1,54 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity control_unit is 
+   port(
+	   --in
+	   clk:in std_logic();
+		reset:in std_logic();
+		opcode:in std_logic_vector(5 downto 0);
+		--out
+		RegDst:out std_logic();
+		RegWrite:out std_logic();
+		ALUsrcA:out std_logic();
+		ALUsrcB:out std_logic_vector(1 downto 0);
+		ALUop:out std_logic_vector(1 downto 0);
+		PCsource:out std_logic_vector(1 downto 0);
+		PCWriteCond:out std_logic();
+		PCWrite:out std_logic();
+		IorD:out std_logic();
+		MemRead:out std_logic();
+		MemWrite:out std_logic();
+		MemtoReg:out std_logic();
+		IRWrite:out std_logic());
+		
+architecture arch of control_unit is
+type state_type is (Fetch,Decode,Execute,Writememory,Writeback);
+signal current_state:state_type;
+signal controlunit_out:out std_logic_vector(15 downto 0);
+begin 
+    process(clk,reset) is
+	 begin
+	    if(reset='1') then 
+		    current_state<=Fetch;
+		elsif(rising_edge(clk)) then
+		    case current_state is
+			     when Fetch => current_state<=Decode;
+				  when Decode => current_state<=Execute;
+				  when Execute => if (opcode="101011") then 
+				                                          current_state<=Writememory;
+										elsif (opcode="000100") then                 
+									                     	   current_state<=Fetch;
+										else 
+										                        current_state<=Writeback;
+										end if;
+				 when Writememory =>                      current_state<=Fetch;
+				 when Writeback => current_state<=Fetch;
+				 when others => current_state<=Fetch;
+			  end case;
+		end if;
+	end process;
+	
+	controlunit_out<="1001010000000000" when current_state=Fetch else
+	                 ""
+	

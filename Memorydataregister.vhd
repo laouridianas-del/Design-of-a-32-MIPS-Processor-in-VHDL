@@ -1,0 +1,31 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Memorydataregister is 
+   port(
+	   --in
+	   data_in:in std_logic_vector(31 downto 0);
+		clk:in std_logic;
+		reset:in std_logic;
+		--out
+      data_out:out std_logic_vector(31 downto 0));
+end Memorydataregister;
+
+architecture arch of Memorydataregister is 
+signal data_sig:std_logic_vector(31 downto 0);
+begin
+   process(clk,reset) is
+	begin
+	   if(reset='1') then
+		
+		   data_sig<=(others=>'0');
+			
+		elsif(rising_edge(clk)) then
+		
+		   data_sig<=data_in;
+			
+		end if;
+	end process;
+	data_out<=data_sig;
+end arch;
+   

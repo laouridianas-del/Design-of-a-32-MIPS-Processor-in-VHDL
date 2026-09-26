@@ -1,0 +1,13 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+ entity mips32_multicycle is 
+    port(
+	  
+	  );
+end mips32_multicycle;
+
+architecture arch of mips32_multicycle is
+begin
+   
+end arch;

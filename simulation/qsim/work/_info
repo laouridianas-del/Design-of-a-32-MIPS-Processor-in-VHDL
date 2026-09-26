@@ -1,0 +1,107 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/anas/Desktop/semiprojects/simulation/qsim
+Emips32_multicycle
+Z1 w1790374441
+Z2 DPx8 cyclonev 18 cyclonev_atom_pack 0 22 ^K2eeK[IVbX]]MLcdOEI91
+Z3 DPx8 cyclonev 19 cyclonev_components 0 22 GFL[QAd@dAZF:`jjOGn9>2
+Z4 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 3dzZ?YU_4FC5UU0cTXRET1
+Z5 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z6 DPx6 altera 11 dffeas_pack 0 22 H5F:RRfLz82T3`4>@b7mS3
+Z7 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z10 DPx6 altera 28 altera_primitives_components 0 22 VSD=32;3391kSOd?PDZYj3
+!i122 56
+R0
+Z11 8mips32_multicycle.vho
+Z12 Fmips32_multicycle.vho
+l0
+L39 1
+VkdY9L^Rbd0Ub7@H6`k4G@3
+!s100 6BR?8C0:;cE<MZMWYVj_k1
+Z13 OV;C;2020.1;71
+32
+!s110 1790374444
+!i10b 1
+Z14 !s108 1790374443.000000
+Z15 !s90 -work|work|mips32_multicycle.vho|
+Z16 !s107 mips32_multicycle.vho|
+!i113 1
+Z17 o-work work
+Z18 tExplicit 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+R10
+DEx4 work 17 mips32_multicycle 0 22 kdY9L^Rbd0Ub7@H6`k4G@3
+!i122 56
+l7801
+L216 96962
+V_AV2bREiE`;?Y6gd1D<X[1
+!s100 ODN3z@?AM;2N25[F[09FF3
+R13
+32
+!s110 1790374445
+!i10b 1
+R14
+R15
+R16
+!i113 1
+R17
+R18
+Emips32_multicycle_vhd_vec_tst
+Z19 w1790374435
+R8
+R9
+!i122 57
+R0
+Z20 8Waveform12.vwf.vht
+Z21 FWaveform12.vwf.vht
+l0
+L32 1
+VX<12ASXLd9I=c5Ll[Bj9[0
+!s100 [Hd=gXR=;QW@YACDO[m?B3
+R13
+32
+Z22 !s110 1790374452
+!i10b 1
+Z23 !s108 1790374451.000000
+Z24 !s90 -work|work|Waveform12.vwf.vht|
+!s107 Waveform12.vwf.vht|
+!i113 1
+R17
+R18
+Amips32_multicycle_arch
+R8
+R9
+Z25 DEx4 work 29 mips32_multicycle_vhd_vec_tst 0 22 X<12ASXLd9I=c5Ll[Bj9[0
+!i122 57
+l55
+L34 55
+V1fLXn>DJ:0cnQm0JoK[>R2
+!s100 5anJ`<[?[hf:=RccN4ogC3
+R13
+32
+R22
+!i10b 1
+R23
+R24
+Z26 !s107 Waveform12.vwf.vht|
+!i113 1
+R17
+R18

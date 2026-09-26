@@ -1,0 +1,762 @@
+Analysis & Synthesis report for mips32_multicycle
+Fri Sep 25 22:59:27 2026
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |mips32_multicycle|control_unit:Ctrl_unit|current_state
+  9. User-Specified and Inferred Latches
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Port Connectivity Checks: "Mux_4in:Mux4_inputs"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Fri Sep 25 22:59:27 2026       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; mips32_multicycle                           ;
+; Top-level Entity Name           ; mips32_multicycle                           ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 1733                                        ;
+; Total pins                      ; 162                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; mips32_multicycle  ; mips32_multicycle  ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                       ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------+---------+
+; Program_counter.vhd              ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/Program_counter.vhd      ;         ;
+; mips32_multicycle.vhd            ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd    ;         ;
+; Mux_2in.vhd                      ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/Mux_2in.vhd              ;         ;
+; Memory.vhd                       ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/Memory.vhd               ;         ;
+; instruction_register.vhd         ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/instruction_register.vhd ;         ;
+; Memorydataregister.vhd           ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/Memorydataregister.vhd   ;         ;
+; Mux_2in5.vhd                     ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/Mux_2in5.vhd             ;         ;
+; Registers.vhd                    ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/Registers.vhd            ;         ;
+; signExtend.vhd                   ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/signExtend.vhd           ;         ;
+; shiftleft.vhd                    ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/shiftleft.vhd            ;         ;
+; shiftleft2.vhd                   ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/shiftleft2.vhd           ;         ;
+; Tempregisters.vhd                ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/Tempregisters.vhd        ;         ;
+; ALU.vhd                          ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/ALU.vhd                  ;         ;
+; ALUcontrol.vhd                   ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/ALUcontrol.vhd           ;         ;
+; Mux_4in.vhd                      ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/Mux_4in.vhd              ;         ;
+; Mux_3in.vhd                      ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/Mux_3in.vhd              ;         ;
+; controlunit.vhd                  ; yes             ; User VHDL File  ; C:/Users/anas/Desktop/semiprojects/controlunit.vhd          ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 2140      ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 2362      ;
+;     -- 7 input functions                    ; 7         ;
+;     -- 6 input functions                    ; 1753      ;
+;     -- 5 input functions                    ; 190       ;
+;     -- 4 input functions                    ; 160       ;
+;     -- <=3 input functions                  ; 252       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 1733      ;
+;                                             ;           ;
+; I/O pins                                    ; 162       ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 1733      ;
+; Total fan-out                               ; 19511     ;
+; Average fan-out                             ; 4.42      ;
++---------------------------------------------+-----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                    ;
++-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------+----------------------+--------------+
+; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                               ; Entity Name          ; Library Name ;
++-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------+----------------------+--------------+
+; |mips32_multicycle                  ; 2362 (13)           ; 1733 (0)                  ; 0                 ; 0          ; 162  ; 0            ; |mips32_multicycle                                ; mips32_multicycle    ; work         ;
+;    |ALU:ArithLOgunit|               ; 386 (386)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|ALU:ArithLOgunit               ; ALU                  ; work         ;
+;    |ALUControl:ArithLOgControl|     ; 12 (12)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|ALUControl:ArithLOgControl     ; ALUControl           ; work         ;
+;    |Memory:Mem|                     ; 1001 (1001)         ; 512 (512)                 ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Memory:Mem                     ; Memory               ; work         ;
+;    |Memorydataregister:MemdataReg|  ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Memorydataregister:MemdataReg  ; Memorydataregister   ; work         ;
+;    |Mux_2in5:Mux_towriteregister|   ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Mux_2in5:Mux_towriteregister   ; Mux_2in5             ; work         ;
+;    |Mux_2in:Mux_toALUinput1|        ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Mux_2in:Mux_toALUinput1        ; Mux_2in              ; work         ;
+;    |Mux_2in:Mux_toWritedata|        ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Mux_2in:Mux_toWritedata        ; Mux_2in              ; work         ;
+;    |Mux_2in:Muxtomem|               ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Mux_2in:Muxtomem               ; Mux_2in              ; work         ;
+;    |Mux_3in:Mux_toPC|               ; 37 (37)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Mux_3in:Mux_toPC               ; Mux_3in              ; work         ;
+;    |Mux_4in:Mux4_inputs|            ; 71 (71)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Mux_4in:Mux4_inputs            ; Mux_4in              ; work         ;
+;    |PC:ProCounter|                  ; 3 (3)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|PC:ProCounter                  ; PC                   ; work         ;
+;    |Registersfile:Registers|        ; 736 (736)           ; 1024 (1024)               ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Registersfile:Registers        ; Registersfile        ; work         ;
+;    |Tempregisters:Temp_registers|   ; 0 (0)               ; 96 (96)                   ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|Tempregisters:Temp_registers   ; Tempregisters        ; work         ;
+;    |control_unit:Ctrl_unit|         ; 28 (28)             ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|control_unit:Ctrl_unit         ; control_unit         ; work         ;
+;    |instruction_register:instr_reg| ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |mips32_multicycle|instruction_register:instr_reg ; instruction_register ; work         ;
++-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------+----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mips32_multicycle|control_unit:Ctrl_unit|current_state                                                                              ;
++---------------------------+-------------------------+---------------------------+-----------------------+----------------------+---------------------+
+; Name                      ; current_state.Writeback ; current_state.Writememory ; current_state.Execute ; current_state.Decode ; current_state.Fetch ;
++---------------------------+-------------------------+---------------------------+-----------------------+----------------------+---------------------+
+; current_state.Fetch       ; 0                       ; 0                         ; 0                     ; 0                    ; 0                   ;
+; current_state.Decode      ; 0                       ; 0                         ; 0                     ; 1                    ; 1                   ;
+; current_state.Execute     ; 0                       ; 0                         ; 1                     ; 0                    ; 1                   ;
+; current_state.Writememory ; 0                       ; 1                         ; 0                     ; 0                    ; 1                   ;
+; current_state.Writeback   ; 1                       ; 0                         ; 0                     ; 0                    ; 1                   ;
++---------------------------+-------------------------+---------------------------+-----------------------+----------------------+---------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                           ;
++-----------------------------------------------------+--------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal            ; Free of Timing Hazards ;
++-----------------------------------------------------+--------------------------------+------------------------+
+; Memory:Mem|Memdata[0]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[1]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[2]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[3]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[4]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[5]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[6]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[7]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[8]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[9]                               ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[10]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[11]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[12]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[13]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[14]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[15]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[16]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[17]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[18]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[19]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[20]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[21]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[22]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[23]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[24]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[25]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[26]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[27]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[28]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[29]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[30]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Memory:Mem|Memdata[31]                              ; control_unit:Ctrl_unit|MemRead ; yes                    ;
+; Number of user-specified and inferred latches = 32  ;                                ;                        ;
++-----------------------------------------------------+--------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1733  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 1221  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1600  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; Memory:Mem|Mem[3][0]                    ; 2       ;
+; Memory:Mem|Mem[19][0]                   ; 2       ;
+; Memory:Mem|Mem[5][0]                    ; 2       ;
+; Memory:Mem|Mem[17][0]                   ; 2       ;
+; Memory:Mem|Mem[7][1]                    ; 2       ;
+; Memory:Mem|Mem[15][1]                   ; 1       ;
+; Memory:Mem|Mem[23][1]                   ; 1       ;
+; Memory:Mem|Mem[35][1]                   ; 1       ;
+; Memory:Mem|Mem[39][1]                   ; 1       ;
+; Memory:Mem|Mem[13][1]                   ; 1       ;
+; Memory:Mem|Mem[9][1]                    ; 1       ;
+; Memory:Mem|Mem[25][1]                   ; 2       ;
+; Memory:Mem|Mem[33][1]                   ; 2       ;
+; Memory:Mem|Mem[1][1]                    ; 3       ;
+; Memory:Mem|Mem[23][2]                   ; 1       ;
+; Memory:Mem|Mem[39][2]                   ; 1       ;
+; Memory:Mem|Mem[28][2]                   ; 1       ;
+; Memory:Mem|Mem[24][2]                   ; 1       ;
+; Memory:Mem|Mem[29][2]                   ; 2       ;
+; Memory:Mem|Mem[20][3]                   ; 2       ;
+; Memory:Mem|Mem[36][3]                   ; 2       ;
+; Memory:Mem|Mem[28][3]                   ; 1       ;
+; Memory:Mem|Mem[24][3]                   ; 1       ;
+; Memory:Mem|Mem[10][3]                   ; 1       ;
+; Memory:Mem|Mem[34][3]                   ; 2       ;
+; Memory:Mem|Mem[16][4]                   ; 3       ;
+; Memory:Mem|Mem[10][4]                   ; 1       ;
+; Memory:Mem|Mem[11][5]                   ; 2       ;
+; Memory:Mem|Mem[15][5]                   ; 1       ;
+; Memory:Mem|Mem[35][5]                   ; 1       ;
+; Memory:Mem|Mem[4][5]                    ; 2       ;
+; Memory:Mem|Mem[24][5]                   ; 1       ;
+; Memory:Mem|Mem[0][5]                    ; 3       ;
+; Memory:Mem|Mem[13][5]                   ; 1       ;
+; Memory:Mem|Mem[9][5]                    ; 1       ;
+; Memory:Mem|Mem[14][5]                   ; 2       ;
+; Memory:Mem|Mem[34][5]                   ; 2       ;
+; Memory:Mem|Mem[13][6]                   ; 1       ;
+; Memory:Mem|Mem[28][7]                   ; 1       ;
+; Memory:Mem|Mem[24][7]                   ; 1       ;
+; Memory:Mem|Mem[17][7]                   ; 2       ;
+; Memory:Mem|Mem[33][7]                   ; 2       ;
+; Total number of inverted registers = 42 ;         ;
++-----------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |mips32_multicycle|PC:ProCounter|PC_Next[0]                 ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |mips32_multicycle|PC:ProCounter|PC_Next[28]                ;
+; 4:1                ; 26 bits   ; 52 LEs        ; 52 LEs               ; 0 LEs                  ; Yes        ; |mips32_multicycle|PC:ProCounter|PC_Next[25]                ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[63][5]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[62][3]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[61][6]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[60][0]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[59][0]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[58][4]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[57][5]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[56][1]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[55][7]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[54][5]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[53][7]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[52][3]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[51][1]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[50][7]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[49][4]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[48][5]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[47][4]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[46][0]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[45][7]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[44][0]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[43][3]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[42][5]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[41][1]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[40][7]                    ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[39][5]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[38][7]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[37][6]                    ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[36][4]                    ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[35][0]                    ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[34][1]                    ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[33][2]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[32][7]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[31][1]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[30][3]                    ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[29][6]                    ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[28][0]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[27][4]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[26][5]                    ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[25][0]                    ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[24][4]                    ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[23][3]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[22][6]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[21][1]                    ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[20][2]                    ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[19][6]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[18][0]                    ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[17][5]                    ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[16][0]                    ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[15][0]                    ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[14][0]                    ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[13][3]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[12][4]                    ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[11][1]                    ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[10][6]                    ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[9][6]                     ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[8][6]                     ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[7][0]                     ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[6][7]                     ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[5][2]                     ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[4][0]                     ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[3][4]                     ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[2][0]                     ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[1][7]                     ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[0][0]                     ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |mips32_multicycle|Tempregisters:Temp_registers|data[1][1]  ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |mips32_multicycle|Tempregisters:Temp_registers|data[0][19] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[39][1]                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[35][1]                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[34][3]                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[33][7]                    ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[28][2]                    ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[24][2]                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[23][1]                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[17][7]                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[15][5]                    ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[13][6]                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[10][4]                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |mips32_multicycle|Memory:Mem|Mem[9][1]                     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |mips32_multicycle|Mux_4in:Mux4_inputs|Mux31                ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|Mux_4in:Mux4_inputs|Mux11                ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|Mux_4in:Mux4_inputs|Mux19                ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |mips32_multicycle|ALUControl:ArithLOgControl|Mux1          ;
+; 4:1                ; 72 bits   ; 144 LEs       ; 144 LEs              ; 0 LEs                  ; No         ; |mips32_multicycle|Memory:Mem|Mux28                         ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|Memory:Mem|Mux18                         ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |mips32_multicycle|ALU:ArithLOgunit|ShiftLeft0              ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |mips32_multicycle|ALU:ArithLOgunit|ShiftLeft0              ;
+; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |mips32_multicycle|ALU:ArithLOgunit|ShiftLeft0              ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|ALU:ArithLOgunit|ShiftLeft0              ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|ALU:ArithLOgunit|ShiftRight0             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|ALU:ArithLOgunit|ShiftLeft0              ;
+; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|Memory:Mem|Mux27                         ;
+; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|Memory:Mem|Mux28                         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|Memory:Mem|Mux3                          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|Memory:Mem|Mux31                         ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 15 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|control_unit:Ctrl_unit|ALUop[0]          ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|control_unit:Ctrl_unit|ALUsrcB[1]        ;
+; 21:1               ; 12 bits   ; 168 LEs       ; 132 LEs              ; 36 LEs                 ; No         ; |mips32_multicycle|ALU:ArithLOgunit|Mux5                    ;
+; 21:1               ; 12 bits   ; 168 LEs       ; 132 LEs              ; 36 LEs                 ; No         ; |mips32_multicycle|ALU:ArithLOgunit|Mux22                   ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|control_unit:Ctrl_unit|MemRead           ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |mips32_multicycle|Memory:Mem|Mux24                         ;
+; 24:1               ; 4 bits    ; 64 LEs        ; 52 LEs               ; 12 LEs                 ; No         ; |mips32_multicycle|ALU:ArithLOgunit|Mux3                    ;
+; 24:1               ; 3 bits    ; 48 LEs        ; 39 LEs               ; 9 LEs                  ; No         ; |mips32_multicycle|ALU:ArithLOgunit|Mux29                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "Mux_4in:Mux4_inputs" ;
++---------------+-------+----------+--------------+
+; Port          ; Type  ; Severity ; Details      ;
++---------------+-------+----------+--------------+
+; input2[31..3] ; Input ; Info     ; Stuck at GND ;
+; input2[1..0]  ; Input ; Info     ; Stuck at GND ;
+; input2[2]     ; Input ; Info     ; Stuck at VCC ;
++---------------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 1733                        ;
+;     CLR               ; 133                         ;
+;     ENA               ; 512                         ;
+;     ENA CLR           ; 1088                        ;
+; arriav_lcell_comb     ; 2362                        ;
+;     arith             ; 65                          ;
+;         0 data inputs ; 1                           ;
+;         5 data inputs ; 64                          ;
+;     extend            ; 7                           ;
+;         7 data inputs ; 7                           ;
+;     normal            ; 2290                        ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 67                          ;
+;         3 data inputs ; 182                         ;
+;         4 data inputs ; 160                         ;
+;         5 data inputs ; 126                         ;
+;         6 data inputs ; 1753                        ;
+; boundary_port         ; 162                         ;
+;                       ;                             ;
+; Max LUT depth         ; 12.70                       ;
+; Average LUT depth     ; 4.91                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:14     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Fri Sep 25 22:58:55 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mips32_multicycle -c mips32_multicycle
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file program_counter.vhd
+    Info (12022): Found design unit 1: PC-arch File: C:/Users/anas/Desktop/semiprojects/Program_counter.vhd Line: 14
+    Info (12023): Found entity 1: PC File: C:/Users/anas/Desktop/semiprojects/Program_counter.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mips32_multicycle.vhd
+    Info (12022): Found design unit 1: mips32_multicycle-arch File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 16
+    Info (12023): Found entity 1: mips32_multicycle File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mux_2in.vhd
+    Info (12022): Found design unit 1: Mux_2in-arch File: C:/Users/anas/Desktop/semiprojects/Mux_2in.vhd Line: 15
+    Info (12023): Found entity 1: Mux_2in File: C:/Users/anas/Desktop/semiprojects/Mux_2in.vhd Line: 4
+Info (12021): Found 0 design units, including 0 entities, in source file instructions_memory.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
+    Info (12022): Found design unit 1: Memory-arch File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 19
+    Info (12023): Found entity 1: Memory File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file instruction_register.vhd
+    Info (12022): Found design unit 1: instruction_register-arch File: C:/Users/anas/Desktop/semiprojects/instruction_register.vhd Line: 15
+    Info (12023): Found entity 1: instruction_register File: C:/Users/anas/Desktop/semiprojects/instruction_register.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file memorydataregister.vhd
+    Info (12022): Found design unit 1: Memorydataregister-arch File: C:/Users/anas/Desktop/semiprojects/Memorydataregister.vhd Line: 14
+    Info (12023): Found entity 1: Memorydataregister File: C:/Users/anas/Desktop/semiprojects/Memorydataregister.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mux_2in5.vhd
+    Info (12022): Found design unit 1: Mux_2in5-arch File: C:/Users/anas/Desktop/semiprojects/Mux_2in5.vhd Line: 15
+    Info (12023): Found entity 1: Mux_2in5 File: C:/Users/anas/Desktop/semiprojects/Mux_2in5.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file registers.vhd
+    Info (12022): Found design unit 1: Registersfile-arch File: C:/Users/anas/Desktop/semiprojects/Registers.vhd Line: 20
+    Info (12023): Found entity 1: Registersfile File: C:/Users/anas/Desktop/semiprojects/Registers.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file signextend.vhd
+    Info (12022): Found design unit 1: signextend-arch File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 13
+    Info (12023): Found entity 1: signextend File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file shiftleft.vhd
+    Info (12022): Found design unit 1: shiftleft-arch File: C:/Users/anas/Desktop/semiprojects/shiftleft.vhd Line: 12
+    Info (12023): Found entity 1: shiftleft File: C:/Users/anas/Desktop/semiprojects/shiftleft.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file shiftleft2.vhd
+    Info (12022): Found design unit 1: shiftleft2-arch File: C:/Users/anas/Desktop/semiprojects/shiftleft2.vhd Line: 12
+    Info (12023): Found entity 1: shiftleft2 File: C:/Users/anas/Desktop/semiprojects/shiftleft2.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file tempregisters.vhd
+    Info (12022): Found design unit 1: Tempregisters-arch File: C:/Users/anas/Desktop/semiprojects/Tempregisters.vhd Line: 18
+    Info (12023): Found entity 1: Tempregisters File: C:/Users/anas/Desktop/semiprojects/Tempregisters.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: ALU-arch File: C:/Users/anas/Desktop/semiprojects/ALU.vhd Line: 14
+    Info (12023): Found entity 1: ALU File: C:/Users/anas/Desktop/semiprojects/ALU.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file alucontrol.vhd
+    Info (12022): Found design unit 1: ALUControl-Behavioral File: C:/Users/anas/Desktop/semiprojects/ALUcontrol.vhd Line: 15
+    Info (12023): Found entity 1: ALUControl File: C:/Users/anas/Desktop/semiprojects/ALUcontrol.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file mux_4in.vhd
+    Info (12022): Found design unit 1: Mux_4in-arch File: C:/Users/anas/Desktop/semiprojects/Mux_4in.vhd Line: 16
+    Info (12023): Found entity 1: Mux_4in File: C:/Users/anas/Desktop/semiprojects/Mux_4in.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mux_3in.vhd
+    Info (12022): Found design unit 1: Mux_3in-arch File: C:/Users/anas/Desktop/semiprojects/Mux_3in.vhd Line: 15
+    Info (12023): Found entity 1: Mux_3in File: C:/Users/anas/Desktop/semiprojects/Mux_3in.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file controlunit.vhd
+    Info (12022): Found design unit 1: control_unit-arch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 26
+    Info (12023): Found entity 1: control_unit File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 4
+Info (12127): Elaborating entity "mips32_multicycle" for the top level hierarchy
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:ArithLOgunit" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 215
+Warning (10492): VHDL Process Statement warning at ALU.vhd(36): signal "result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/anas/Desktop/semiprojects/ALU.vhd Line: 36
+Info (12128): Elaborating entity "ALUControl" for hierarchy "ALUControl:ArithLOgControl" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 216
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:Ctrl_unit" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 217
+Info (12128): Elaborating entity "instruction_register" for hierarchy "instruction_register:instr_reg" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 218
+Warning (10492): VHDL Process Statement warning at instruction_register.vhd(24): signal "IRW" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/anas/Desktop/semiprojects/instruction_register.vhd Line: 24
+Info (12128): Elaborating entity "Memory" for hierarchy "Memory:Mem" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 219
+Warning (10492): VHDL Process Statement warning at Memory.vhd(80): signal "Memwrite" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 80
+Info (10041): Inferred latch for "Memdata[0]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[1]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[2]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[3]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[4]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[5]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[6]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[7]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[8]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[9]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[10]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[11]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[12]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[13]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[14]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[15]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[16]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[17]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[18]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[19]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[20]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[21]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[22]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[23]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[24]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[25]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[26]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[27]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[28]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[29]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[30]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (10041): Inferred latch for "Memdata[31]" at Memory.vhd(87) File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+Info (12128): Elaborating entity "Memorydataregister" for hierarchy "Memorydataregister:MemdataReg" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 220
+Info (12128): Elaborating entity "Mux_2in" for hierarchy "Mux_2in:Muxtomem" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 221
+Info (12128): Elaborating entity "Mux_2in5" for hierarchy "Mux_2in5:Mux_towriteregister" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 224
+Info (12128): Elaborating entity "Mux_3in" for hierarchy "Mux_3in:Mux_toPC" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 225
+Info (12128): Elaborating entity "Mux_4in" for hierarchy "Mux_4in:Mux4_inputs" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 226
+Info (12128): Elaborating entity "PC" for hierarchy "PC:ProCounter" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 227
+Warning (10492): VHDL Process Statement warning at Program_counter.vhd(18): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/anas/Desktop/semiprojects/Program_counter.vhd Line: 18
+Warning (10492): VHDL Process Statement warning at Program_counter.vhd(20): signal "PC_En" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/anas/Desktop/semiprojects/Program_counter.vhd Line: 20
+Info (12128): Elaborating entity "Registersfile" for hierarchy "Registersfile:Registers" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 228
+Warning (10492): VHDL Process Statement warning at Registers.vhd(28): signal "Regwrite" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/anas/Desktop/semiprojects/Registers.vhd Line: 28
+Info (12128): Elaborating entity "shiftleft" for hierarchy "shiftleft:shiftll" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 229
+Info (12128): Elaborating entity "shiftleft2" for hierarchy "shiftleft2:shiftll2" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 230
+Info (12128): Elaborating entity "signextend" for hierarchy "signextend:sign_extend" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 231
+Info (10041): Inferred latch for "output[0]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[1]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[2]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[3]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[4]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[5]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[6]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[7]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[8]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[9]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[10]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[11]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[12]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[13]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[14]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[15]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[16]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[17]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[18]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[19]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[20]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[21]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[22]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[23]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[24]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[25]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[26]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[27]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[28]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[29]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[30]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (10041): Inferred latch for "output[31]" at signExtend.vhd(15) File: C:/Users/anas/Desktop/semiprojects/signExtend.vhd Line: 15
+Info (12128): Elaborating entity "Tempregisters" for hierarchy "Tempregisters:Temp_registers" File: C:/Users/anas/Desktop/semiprojects/mips32_multicycle.vhd Line: 232
+Warning (13012): Latch Memory:Mem|Memdata[0] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[1] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[2] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[3] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[4] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[5] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[6] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[7] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[8] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[9] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[10] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[11] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[12] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[13] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[14] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[15] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[16] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[17] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[18] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[19] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[20] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[21] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[22] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[23] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[24] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[25] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[26] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[27] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[28] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[29] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[30] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Warning (13012): Latch Memory:Mem|Memdata[31] has unsafe behavior File: C:/Users/anas/Desktop/semiprojects/Memory.vhd Line: 87
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:Ctrl_unit|current_state.Fetch File: C:/Users/anas/Desktop/semiprojects/controlunit.vhd Line: 28
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 3644 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 160 output pins
+    Info (21061): Implemented 3482 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 71 warnings
+    Info: Peak virtual memory: 4869 megabytes
+    Info: Processing ended: Fri Sep 25 22:59:27 2026
+    Info: Elapsed time: 00:00:32
+    Info: Total CPU time (on all processors): 00:00:47
+
+
